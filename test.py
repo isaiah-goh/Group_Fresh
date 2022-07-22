@@ -6,3 +6,8 @@ api_key = "0GB2H0EPEH2W014M"
 url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_symbol=USD&to_symbol=SGD&apikey={api_key}"
 response = requests.get(url)
 currency_exchange_rate = response.json()
+
+exchange_rate = []
+for items in currency_exchange_rate:
+    exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
+print(exchange_rate)
