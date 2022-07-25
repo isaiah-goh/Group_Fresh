@@ -28,8 +28,7 @@ with fp.open(mode="r",encoding="UTF-8")as file:
     for values in reader:
         empty_list.append(values[4])
         date.append(values[0])
-print(empty_list)
-print(date)
+
 number_1=-1
 number_2=0       
 difference=[]
@@ -39,6 +38,7 @@ for items in range(0,5):
     number_2+=1
     difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
 for date,subtract in enumerate(difference,37):
+  
     if subtract<0:
         print(f"[CASH DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
     
