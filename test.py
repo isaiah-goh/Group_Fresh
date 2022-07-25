@@ -10,13 +10,7 @@ currency_exchange_rate = response.json()
 exchange_rate = []
 for items in currency_exchange_rate:
     exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
-print(exchange_rate)
-
-
-
-
-
-
+print(f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate}") 
 
 
 
