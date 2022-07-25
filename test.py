@@ -43,3 +43,21 @@ for date,subtract in enumerate(difference,37):
         print(f"[CASH DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
     
 
+#OVERHEADS 
+from pathlib import Path
+import csv
+
+expenses_value=[]
+expenses_type=[]
+
+fp = Path.cwd()/"overheads_day_41.csv"
+
+with fp.open(mode="r", encoding="UTF-8") as file:
+    reader = csv.reader(file)
+    next(reader)
+    for values in reader:
+        expenses_type.append(values[0])
+        expenses_value.append(values[1])
+highest_expense = (expenses_type), max( expenses_value)
+
+print(highest_expense)
