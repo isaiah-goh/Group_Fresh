@@ -26,11 +26,23 @@ import csv
 
 
 empty_list=[]
-fp=Path.cwd()/"profit-and-loss-hkd (1).csv"
+date=[]
+fp=Path.cwd()/"profit-and-loss-usd.csv"
 with fp.open(mode="r",encoding="UTF-8")as file:
     reader=csv.reader(file)
     next(reader)
     for values in reader:
         empty_list.append(values[4])
-    for items in empty_list:
+        date.append(values[0])
+print(empty_list)
+print(date)
+number_1=-1
+number_2=0       
+difference=[]
+
+for items in range(0,5):
+    number_1+=1
+    number_2+=1
+    difference.append((int(empty_list[number_1])-int(empty_list[number_2])))
+print(difference)
 
