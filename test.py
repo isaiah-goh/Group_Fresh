@@ -44,5 +44,6 @@ for items in range(0,5):
     number_1+=1
     number_2+=1
     difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
-print(difference)
+for date,subtract in enumerate(difference,37):
+    print(date,subtract)
 
