@@ -40,6 +40,34 @@ for items in range(0,5):
 for date,subtract in enumerate(difference,37):
   
     if subtract<0:
+        print(f"[PROFIT DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
+        
+#Cash on Hand
+from pathlib import Path
+import re, csv
+from xml.dom.minicompat import EmptyNodeList
+
+amount = []
+date = []
+fp = Path.cwd()/"Cash_on_hand"/"cash.csv"
+with fp.open(mode ="r", encoding="UTF-8") as x:
+    reader=csv.reader(x)
+    next(reader)
+    for values in reader:
+        amount.append(values[1])
+        date.append(values[0])
+
+number_1=-1
+number_2=0       
+difference=[]
+
+for items in range(0,5):
+    number_1+=1
+    number_2+=1
+    difference.append((int(amount[number_2])-int(amount[number_1])))
+
+for date,subtract in enumerate(difference,37):
+    if subtract<0:
         print(f"[CASH DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
     
 
