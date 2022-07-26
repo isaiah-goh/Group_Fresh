@@ -86,6 +86,6 @@ with fp.open(mode="r", encoding="UTF-8") as file:
     for values in reader:
         expenses_type.append(values[0])
         expenses_value.append(values[1])
-highest_expense = (expenses_type), max( expenses_value)
-
-print(highest_expense)
+for i,amount in enumerate(expenses_value):
+    if amount == max(expenses_value):
+        print(f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}")
