@@ -28,19 +28,20 @@ with fp.open(mode="r",encoding="UTF-8")as file:
     for values in reader:
         empty_list.append(values[4])
         date.append(values[0])
+def profit_and_loss():
+    number_1=-1
+    number_2=0       
+    difference=[]
+    non_deficits=[]
+    for items in range(0,5):
+        number_1+=1
+        number_2+=1
+        difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
+    for date,subtract in enumerate(difference,37):
+        if subtract<0:
+            return f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}"
+print(profit_and_loss())
 
-number_1=-1
-number_2=0       
-difference=[]
-non_deficts=[]
-for items in range(0,5):
-    number_1+=1
-    number_2+=1
-    difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
-for date,subtract in enumerate(difference,37):
-  
-    if subtract<0:
-        print(f"[PROFIT DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
         
 #Cash on Hand
 from pathlib import Path
