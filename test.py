@@ -1,5 +1,4 @@
-from pathlib import Path
-import csv
+#api call
 import requests
 
 api_key = "0GB2H0EPEH2W014M"
@@ -7,10 +6,12 @@ url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_c
 response = requests.get(url)
 currency_exchange_rate = response.json()
 
-exchange_rate = []
-for items in currency_exchange_rate:
-    exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
-print(f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate[0]}") 
+def forex():
+    exchange_rate = []
+    for items in currency_exchange_rate:
+        exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
+    return f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate[0]}"
+print(forex())
 
 
 
@@ -45,8 +46,7 @@ print(profit_and_loss())
         
 #Cash on Hand
 from pathlib import Path
-import re, csv
-from xml.dom.minicompat import EmptyNodeList
+import csv
 
 amount = []
 date = []
@@ -58,18 +58,18 @@ with fp.open(mode ="r", encoding="UTF-8") as x:
         amount.append(values[1])
         date.append(values[0])
 
-number_1=-1
-number_2=0       
-difference=[]
-
-for items in range(0,5):
-    number_1+=1
-    number_2+=1
-    difference.append((int(amount[number_2])-int(amount[number_1])))
-
-for date,subtract in enumerate(difference,37):
-    if subtract<0:
-        print(f"[CASH DEFICT] DAY {date}, AMOUNT :SGD{subtract*-1}")
+def cash_on_hand():
+    number_1=-1
+    number_2=0       
+    difference=[]
+    for items in range(0,5):
+        number_1+=1
+        number_2+=1
+        difference.append((int(amount[number_2])-int(amount[number_1])))
+    for date,subtract in enumerate(difference,37):
+        if subtract<0:
+            return f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}"
+print(cash_on_hand())
     
 
 #OVERHEADS 
@@ -87,6 +87,9 @@ with fp.open(mode="r", encoding="UTF-8") as file:
     for values in reader:
         expenses_type.append(values[0])
         expenses_value.append(values[1])
-for i,amount in enumerate(expenses_value):
-    if amount == max(expenses_value):
-        print(f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}")
+        
+def overheads():
+    for i,amount in enumerate(expenses_value):
+        if amount == max(expenses_value):
+            return f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}"
+print(overheads())
