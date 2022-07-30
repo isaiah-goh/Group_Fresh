@@ -58,7 +58,8 @@ with fp.open(mode ="r", encoding="UTF-8") as x:
         amount.append(values[1])
         date.append(values[0])
 
-def cash_on_hand():
+def coh():
+    value = ""
     number_1=-1
     number_2=0       
     difference=[]
@@ -68,8 +69,8 @@ def cash_on_hand():
         difference.append((int(amount[number_2])-int(amount[number_1])))
     for date,subtract in enumerate(difference,37):
         if subtract<0:
-            return f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}"
-print(cash_on_hand())
+            value += f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}" "\n"
+print(coh())
     
 
 #OVERHEADS 
@@ -88,8 +89,8 @@ with fp.open(mode="r", encoding="UTF-8") as file:
         expenses_type.append(values[0])
         expenses_value.append(values[1])
         
-def overheads():
+def expense():
     for i,amount in enumerate(expenses_value):
         if amount == max(expenses_value):
             return f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}"
-print(overheads())
+print(expense())
