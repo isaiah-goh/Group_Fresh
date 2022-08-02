@@ -10,8 +10,8 @@ def forex():
     exchange_rate = []
     for items in currency_exchange_rate:
         exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
-    return f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate[0]}"
-print(forex())
+    print(f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate[0]}")
+forex()
 
 
 
@@ -40,8 +40,8 @@ def profit_and_loss():
         difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
     for date,subtract in enumerate(difference,37):
         if subtract<0:
-            return f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}"
-print(profit_and_loss())
+            print(f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}")
+profit_and_loss()
 
         
 #Cash on Hand
@@ -59,7 +59,6 @@ with fp.open(mode ="r", encoding="UTF-8") as x:
         date.append(values[0])
 
 def coh():
-    value = ""
     number_1=-1
     number_2=0       
     difference=[]
@@ -69,8 +68,8 @@ def coh():
         difference.append((int(amount[number_2])-int(amount[number_1])))
     for date,subtract in enumerate(difference,37):
         if subtract<0:
-            value += f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}" "\n"
-print(coh())
+            print(f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{subtract*-1}")
+coh()
     
 
 #OVERHEADS 
@@ -92,5 +91,5 @@ with fp.open(mode="r", encoding="UTF-8") as file:
 def expense():
     for i,amount in enumerate(expenses_value):
         if amount == max(expenses_value):
-            return f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}"
-print(expense())
+            print(f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{amount}")
+expense()
