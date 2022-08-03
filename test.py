@@ -39,6 +39,9 @@ def profit_and_loss():
         if subtract<0:
             value = subtract* -1
             print(f"[PROFIT DEFICIT] DAY {date}, AMOUNT :SGD{float(value)*float(api.exchange_rate[0])}")
+        else:
+            if min(difference)>0:
+                print(f"[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
 profit_and_loss()
         
 #Cash on Hand
@@ -66,7 +69,10 @@ def coh():
     for date,subtract in enumerate(difference,37):
         if subtract<0:
             value = subtract* -1
-            print(f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{float(value)*float(api.exchange_rate[0])}")
+            print(f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{round(float(value)*float(api.exchange_rate[0]),2)}")
+        else:
+            if min(difference)>0:
+                print(f"[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
 coh()
 
 #OVERHEADS 
