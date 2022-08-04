@@ -35,25 +35,32 @@ api_function()
 from pathlib import Path
 import csv, api
 
-#create empty list to append values extracted from the csv files 
+ 
 empty_list=[]
 date=[]
-#create file path to access profit and loss csv file downloaded from monsoonsim
+#create empty list to append values extracted from the csv files
+
 fp=Path.cwd()/"csv_reports"/"Profits and Loss.csv"
-#open the file to read file 
+#create file path to access profit and loss csv file downloaded from monsoonsim
+ 
 with fp.open(mode="r",encoding="UTF-8")as file:
-    #create reader object 
+    #open the file to read file
     reader=csv.reader(file)
-    # skip the header for better mathematical calculations in future steps 
-    next(reader)
-    # use for loop to read csv file 
+    #create reader object 
+     next(reader)
+    # skip the header for better mathematical calculations in future steps
+     
     for values in reader:
-        # use indexing to extract the net profit 
+        # use for loop to read csv file
+        
         empty_list.append(values[4])
-        #use indexing to extract the dates 
+         # use indexing to extract the net profit
+        
         date.append(values[0])
-#create day variable to match the difference in profit later in the code         
+        #use indexing to extract the dates 
+        
 day = int(date[0]) + 1
+#create day variable to match the difference in profit later in the code 
 def profitloss_function():
     '''
     the profitloss function extracts the difference in net profit 
@@ -61,33 +68,41 @@ def profitloss_function():
     if there is not profit deficit , function returns net profit on each day is higher than the previous
 
     '''
-    # create two variables so that the days increases with each loop 
+    
     number_1=-1
     number_2=0  
-    #create empty list to append profit difference between 2 consecutive day     
+    # create two variables so that the days increases with each loop 
+         
     difference=[]
-    #create empty string to append all profit deficit satements  
+    #create empty list to append profit difference between 2 consecutive day
+    
     data = ""
-    #for loop to iterate through empty list 
+    #create empty string to make the statement to a string 
+   
     for items in range(0,5):
-        #create variables to allow the indexing of numbers to increase accordingly to the number of loops 
+         #for loop to iterate through empty list 
+        
         number_1+=1
         number_2+=1
-        #find the difference between the profits of censecutive day 
+         #create variables to allow the indexing of numbers to increase accordingly to the number of loops
+         
         difference.append((int(empty_list[number_2])-int(empty_list[number_1])))
-    # use conditionals to return the required requirements accordingly 
-    #scenario 1 -- there is no profit deficit
+        #find the difference between the profits of censecutive day
+   
     if min(difference)>0:
         return f"[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
-    #scenario 2--- there is profit deficit 
-    # create for loop to extract profit deficits 
-    #use enumerate to match the dates to the profit deficits accordingly 
+         # use conditionals to return the required requirements accordingly 
+    #scenario 1 -- there is no profit deficit
+     
     for date,subtract in enumerate(difference,day):
         if subtract<0:
             value = subtract* -1
             data += f"[PROFIT DEFICIT] DAY {date}, AMOUNT :SGD{round(float(value)*float(api.exchange_rate[0]),2)}" "\n"
     return data
 profitloss_function()
+#scenario 2--- there is profit deficit 
+    # create for loop to extract profit deficits 
+    #use enumerate to match the dates to the profit deficits accordingly
         
 #Cash on Hand
 from pathlib import Path
