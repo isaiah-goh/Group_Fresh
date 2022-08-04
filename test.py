@@ -96,3 +96,21 @@ def expense():
         if amount == max(expenses_value):
             print(f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{float(amount)*float(api.exchange_rate[0])}")
 expense()
+
+#main.py
+import api, coh, overheads, profit_loss
+from pathlib import Path
+
+def main():
+    forex = api.api_function()
+    overheads.overhead_function()
+    coh.coh_function()
+    profit_loss.profitloss_function()
+
+output = main()
+
+fp = Path.cwd()/"summary_report.txt"
+fp.touch()
+with fp.open(mode="w", encoding="UTF-8") as file:
+    file.write(output)
+    
