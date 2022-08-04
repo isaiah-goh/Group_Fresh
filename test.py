@@ -71,14 +71,18 @@ import csv, api
 amount = []
 date = []
 fp = Path.cwd()/"csv_reports"/"Cash on Hand.csv"
+#creating of file path to csv
 with fp.open(mode ="r", encoding="UTF-8") as x:
     reader=csv.reader(x)
     next(reader)
     for values in reader:
         amount.append(values[1])
         date.append(values[0])
-
+#reading the csv and appending the day and amount values into empty lists
 def coh_function():
+    """
+    This code is used to compute the difference in Cash-on-Hand between each day.
+    """
     number_1=-1
     number_2=0  
     data = "" 
@@ -87,8 +91,10 @@ def coh_function():
         number_1+=1
         number_2+=1
         difference.append((int(amount[number_2])-int(amount[number_1])))
+    #for loop to iterate the amount list and append the difference in each days amount into a empty list
     if min(difference)>0:
         return f"[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY" "\n"
+    #if the smallest difference is less then zero it will produce this output
     for date,subtract in enumerate(difference,37):
         if subtract<0:
             value = subtract* -1
