@@ -79,6 +79,7 @@ with fp.open(mode ="r", encoding="UTF-8") as x:
         amount.append(values[1])
         date.append(values[0])
 #reading the csv and appending the day and amount values into empty lists
+day = int(date[0]) + 1
 def coh_function():
     """
     This code is used to compute the difference in Cash-on-Hand between each day.
@@ -95,7 +96,7 @@ def coh_function():
     if min(difference)>0:
         return f"[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY" "\n"
     #if the smallest difference is less then zero it will produce this output
-    for date,subtract in enumerate(difference,37):
+    for date,subtract in enumerate(difference,day):
         if subtract<0:
             value = subtract* -1
             data += f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{round(float(value)*float(api.exchange_rate[0]),2)}" "\n"          
