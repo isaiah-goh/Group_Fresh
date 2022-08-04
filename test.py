@@ -1,33 +1,33 @@
 #api call
 import requests
-#import requests module
+# import requests module
 
 api_key = "0GB2H0EPEH2W014M"
-#get api key
+# get api key
 
 url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey={api_key}"
-#url that shows the exchange rate between USD and SGD
+# url that shows the exchange rate between USD and SGD
 
 response = requests.get(url)
 # use get method from requests on the api url
 
 currency_exchange_rate = response.json()
-#use json method to from request to get data from the website and assign to the variable currency_exchange_rate
+# use json method to from request to get data from the website and assign to the variable currency_exchange_rate
 
 
 exchange_rate = []
-#create empty list to append exchange rate inside
+# create empty list to append exchange rate inside
 
 def api_function():
     """
     - shows the exchange rate between USD and SGD
     """
     for items in currency_exchange_rate:
-    #use for loop to iterate over the items from the extracted data from the website    
+    # use for loop to iterate over the items from the extracted data from the website    
         exchange_rate.append(currency_exchange_rate[items]['5. Exchange Rate'])
-        #append the exchange rate value into the empty list
+        # append the exchange rate value into the empty list
     return f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{exchange_rate[0]}"
-    #return the statement that needs to be put into the text file
+    # return the statement that needs to be put into the text file
 api_function()
 
 
