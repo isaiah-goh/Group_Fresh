@@ -134,22 +134,36 @@ from pathlib import Path
 import csv, api
 
 expenses_value=[]
+#create empty list to append the value for the expense
 expenses_type=[]
+#create empty list to append the type of expense
 
 fp = Path.cwd()/"csv_reports"/"Overheads.csv"
+#locate overheads.csv in the current working directory by creating a file path object
 
 with fp.open(mode="r", encoding="UTF-8") as file:
+#open file in read mode
     reader = csv.reader(file)
+    #create a csv object
     next(reader)
+    # skip header in the csv file
     for values in reader:
+    # use for loop to iterate over the data in the overheads.csv
         expenses_type.append(values[0])
+        # append the type of expense to the empty list
         expenses_value.append(values[1])
+        # append the value of the expense to the empty list
 
 def overhead_function():
+    """
+    - find out the expense in the overheads that is the highest and its value
+    """
     for i,amount in enumerate(expenses_value):
+    # 
         if amount == max(expenses_value):
+        # if is created as a condition when the code run to highlight the highest overhead expense
             return f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{round(float(amount)*float(api.exchange_rate[0]),2)}"
-overhead_function()
+overhead_function() 
 
 #main.py
 import api, cash_on_hand, overheads, profit_loss
