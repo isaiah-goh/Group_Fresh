@@ -174,7 +174,7 @@ def overhead_function():
     - find out the expense in the overheads that is the highest and its value
     """
     for i,amount in enumerate(expenses_value):
-    # 
+     #use enumerate to match the dates to the overheads accordingly 
         if amount == max(expenses_value):
         # if is created as a condition when the code run to highlight the highest overhead expense
             return f"[HIGHEST OVERHEADS] {expenses_type[i]}: SGD{round(float(amount)*float(api.exchange_rate[0]),2)}"
