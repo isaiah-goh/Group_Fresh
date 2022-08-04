@@ -127,16 +127,30 @@ overhead_function()
 
 #main.py
 import api, cash_on_hand, overheads, profit_loss
+# import function  from  api, cash_on_hand, overheads and profit_loss
+
 from pathlib import Path
+# Import Path from pathlib
 
 fp = Path.cwd()/"summary_report.txt"
+# To locate summary_report.txt in the current working directory by creating a file path object
+
 fp.touch()
+# create the text file as it does not exist
 
 with fp.open(mode="w", encoding="UTF-8",) as file:
+# Open the file in write mode
+
     file.write(api.api_function())
+    # Write currency rate to text file
     file.write("\n")
+    # Write to the next line
     file.write(overheads.overhead_function())
+    # Write highest overhead expense and its accompanied value to text file
     file.write("\n")
+    # Write to the next line
     file.write(cash_on_hand.coh_function())
+    # Write the days that cash in hand that is lower than the previous day and its accompanied value to the text file.
     file.write(profit_loss.profitloss_function())
+    # Write the day that has a lower profit than the previous day and its accompanied value to the text file.
     
