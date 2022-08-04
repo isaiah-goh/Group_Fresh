@@ -6,7 +6,6 @@ url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_c
 response = requests.get(url)
 currency_exchange_rate = response.json()
 
-
 exchange_rate = []
 def api_function():
     for items in currency_exchange_rate:
