@@ -61,9 +61,10 @@ with fp.open(mode ="r", encoding="UTF-8") as x:
         amount.append(values[1])
         date.append(values[0])
 
-def coh():
+def coh_function():
     number_1=-1
-    number_2=0       
+    number_2=0  
+    data = "" 
     difference=[]
     for items in range(0,5):
         number_1+=1
@@ -72,11 +73,12 @@ def coh():
     for date,subtract in enumerate(difference,37):
         if subtract<0:
             value = subtract* -1
-            print(f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{round(float(value)*float(api.exchange_rate[0]),2)}")
+            data += f"[CASH DEFICIT] DAY {date}, AMOUNT :SGD{round(float(value)*float(api.exchange_rate[0]),2)}" "\n"
+            return data
         else:
             if min(difference)>0:
-                print(f"[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
-coh()
+                return f"[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
+coh_function()
 
 #OVERHEADS 
 from pathlib import Path
